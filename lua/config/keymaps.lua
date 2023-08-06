@@ -276,13 +276,15 @@ end
 
 vim.cmd('autocmd FileType * lua keymap_by_file_type()')
 
-vim.keymap.set("n", "<c-p>", "<leader><leader>", { silent = true, remap = true })
-vim.keymap.set("i", "<c-p>", "<leader><leader>", { silent = true, remap = true })
+vim.keymap.set("n", "<c-p>", "<leader>fF", { silent = true, remap = true })
+vim.keymap.set("i", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<esc>", "<esc><esc>", { silent = true, remap = true })
 vim.keymap.set("n", "\\a", "ggVG", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
 
 vim.keymap.set("i", "<c-\\>", "codeium#Accept()", { silent = true, remap = true, nowait = true, expr = true })
+vim.keymap.set("i", "<c-e>", "codeium#Complete()", { silent = true, remap = true, nowait = true, expr = true })
   -- imap <script><silent><nowait><expr> qwe 
 
+vim.keymap.set("v", "\'", "%", { silent = true, remap = true, nowait = true, expr = false })
