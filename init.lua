@@ -12,10 +12,10 @@ else
   require("config.lazy")
 
 
-  -- require("notify").setup({
-  --   timeout = 500,
-  --   stages = "static",
-  -- })
+  require("notify").setup({
+    timeout = 3000,
+    stages = "static",
+  })
 -- vim.api.nvim_command('autocmd ColorScheme * highlight Visual gui=reverse')
 -- vim.api.nvim_command('highlight Visual gui=reverse')
 -- vim.api.nvim_command("highlight Visual guibg=grey guifg=blue")
@@ -45,26 +45,58 @@ require("telescope").load_extension("notify")
 -- require'lspconfig'.pyls_ms.setup{}
 -- require"nvim_lsp"
 
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.lua_ls.setup {}
---
-require'lspconfig'.pyright.setup {
-  on_attach = on_attach,
-  settings =
-    {
-      pyright = {autoImportCompletion = true,},
-      python = {
-        pythonPath = "/home/wyl/anaconda3/bin/python3",
-        analysis = {
-          autoSearchPaths = true,
-          diagnosticMode = 'openFilesOnly',
-          useLibraryCodeForTypes = true,
-          typeCheckingMode = 'off'
-        }
-      }
-    }
+require'lspconfig'.clangd.setup{
+  on_attach = function ()
+    require("clangd_extensions.inlay_hints").setup_autocmd()
+    require("clangd_extensions.inlay_hints").set_inlay_hints()
+  end
 }
+-- require'lspconfig'.rust_analyzer.setup{}
+-- require'lspconfig'.lua_ls.setup {}
+--
+-- require'lspconfig'.pyright.setup {
+--   on_attach = on_attach,
+--   settings =
+--     {
+--       pyright = {autoImportCompletion = true,},
+--       python = {
+--         pythonPath = "/home/wyl/anaconda3/bin/python3",
+--         analysis = {
+--           autoSearchPaths = true,
+--           diagnosticMode = 'openFilesOnly',
+--           useLibraryCodeForTypes = true,
+--           typeCheckingMode = 'off'
+--         }
+--       }
+--     }
+-- }
+--
 
+-- require'lspconfig'.pylsp.setup {
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         ruff = {
+--           enabled = false
+--         },
+--         pyright = {
+--           enabled = true
+--         },
+--         pycodestyle = {
+--           enabled = false
+--         },
+--         pyflakes = {
+--           enabled = false
+--         },
+--         mccabe = {
+--           enabled = false
+--         }
+--       }
+--     }
+--   },
+-- }
+--
+--
 
 local custom_attach = function(client)
     print("Built-in LSP started.")
@@ -122,4 +154,9 @@ require("rust-tools").setup({
   }
 
 end
+
+
+
+
+
 

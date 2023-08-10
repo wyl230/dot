@@ -47,9 +47,9 @@ return {
     local cmp = require("cmp")
     opts.sources = cmp.config.sources({
       { name = "vsnip" },
+      { name = "luasnip" },
       { name = "codeium" },
       { name = "nvim_lsp" },
-      { name = "luasnip" },
       { name = "buffer" },
       { name = "path" },
       { name = "crates" },
