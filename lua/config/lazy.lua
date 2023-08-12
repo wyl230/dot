@@ -308,3 +308,5 @@ end)
 -- })
 
 require("clangd_extensions.inlay_hints").set_inlay_hints()
+require("gitsigns").setup({})
+

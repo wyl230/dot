@@ -4,9 +4,18 @@
 --
 --
 -- This file is automatically loaded by lazyvim.config.init
+-- git keymap
+vim.keymap.set("n", "<leader>gn", ":DiffviewOpen<cr>", { desc = "git diff with last commit", remap = true, silent = true })
+vim.keymap.set("n", "<leader>ga", ":DiffviewFileHistory<cr>", { desc = "git diff with last commit", remap = true, silent = true })
+--
 
+vim.keymap.set("n", "<leader>we", "<C-W>p", { desc = "Other window", remap = true })
 vim.keymap.set("n", "<c-c>", ":q<CR>", { silent = true })
 vim.keymap.set("i", "jj", "<esc>", { silent = true })
+vim.keymap.set("n", "<enter>", "<esc>", { silent = true })
+vim.keymap.set("n", "<down>", "<c-d>", { silent = true })
+vim.keymap.set("n", "<up>", "<c-u>", { silent = true })
+-- vim.keymap.set("n", "<left>", "<c-", { silent = true })
 vim.keymap.set("i", "jk", "<esc>", { silent = true })
 vim.keymap.set("v", "q", "<esc>", { silent = true })
 -- vim.keymap.set("x", "jj", "<esc>", { silent = true })
@@ -214,6 +223,7 @@ vim.keymap.set("n", "--", "<space>bd", { remap = true, silent = true })
 --
 -- -- windows
 -- map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
+-- map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 -- map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 -- map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 -- map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
@@ -260,6 +270,9 @@ vim.keymap.set("n", "--", "<space>bd", { remap = true, silent = true })
 function keymap_by_file_type()
   local buf = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+    vim.keymap.set('n', '<leader>as', ":AsyncStop<cr>", { remap = true, silent = true })
+    vim.keymap.set('n', '<F3>', ":w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
+    vim.keymap.set('n', '<F4>', ":w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
   -- print(ft)
   if ft == "python" then
     vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
@@ -285,6 +298,7 @@ vim.keymap.set("n", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<esc>", "<esc><esc>", { silent = true, remap = true })
 vim.keymap.set("n", "\\a", "ggVG", { silent = true, remap = true })
+vim.keymap.set("n", "\\q", ":qa!<cr>", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
 
@@ -345,3 +359,19 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- vim.keymap.set("n", "<leader><leader>", function()
 --     vim.cmd("so")
 -- end)
+-- 定义一个变量来记录当前状态
+local enter_counter = 0
+
+-- 设置 <Enter> 键在不同次数下执行不同命令
+vim.api.nvim_set_keymap('n', '<CR>', ':lua toggle_enter_action()<CR>', { noremap = true, silent = true })
+
+-- 切换命令的函数
+function toggle_enter_action()
+    if enter_counter == 0 then
+        vim.cmd('normal! zc')
+        enter_counter = 1
+    else
+        vim.cmd('normal! zo')
+        enter_counter = 0
+    end
+end

@@ -72,29 +72,29 @@ require'lspconfig'.clangd.setup{
 -- }
 --
 
--- require'lspconfig'.pylsp.setup {
---   settings = {
---     pylsp = {
---       plugins = {
---         ruff = {
---           enabled = false
---         },
---         pyright = {
---           enabled = true
---         },
---         pycodestyle = {
---           enabled = false
---         },
---         pyflakes = {
---           enabled = false
---         },
---         mccabe = {
---           enabled = false
---         }
---       }
---     }
---   },
--- }
+require'lspconfig'.pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        ruff = {
+          enabled = false
+        },
+        pyright = {
+          enabled = false
+        },
+        pycodestyle = {
+          enabled = false
+        },
+        pyflakes = {
+          enabled = false
+        },
+        mccabe = {
+          enabled = false
+        }
+      }
+    }
+  },
+}
 --
 --
 
@@ -157,6 +157,17 @@ end
 
 
 
+
+-- require("neoscroll").setup()
+-- if vim.g.neovide == true then
+-- vim.cmd 'set guifont=Hack\ NF:h10'
+-- vim.o.guifont='Consolas:h10'
+vim.o.guifont = "FiraCode NF:h14"
+-- vim.o.guifont = { "Operator Mono,FiraCode NF:h10", "10" }
+-- vim.o.guifont = "Operator Mono,FiraCode NF:h10"
+
+vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+-- end
 
 
 
