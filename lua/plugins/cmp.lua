@@ -24,6 +24,8 @@ return {
   dependencies = {
     {
       "Saecki/crates.nvim",
+      -- "jcdickinson/codeium.nvim",
+      -- /jcdickinson/codeium.nvim
       "Exafunction/codeium.vim",
       "hrsh7th/nvim-cmp",
 

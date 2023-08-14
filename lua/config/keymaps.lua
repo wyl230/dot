@@ -48,7 +48,8 @@ vim.keymap.set("n", "<leader>go", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", 
 vim.keymap.set("n", "<leader>gw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", {remap = true, silent = true})
 
 vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { remap = true, silent = true })
-vim.keymap.set("n", "<leader>dd", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", { remap = true, silent = true })
+-- vim.keymap.set("n", "<leader>dd", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", { remap = true, silent = true })
+vim.keymap.set("n", "<leader>dd", ":Navbuddy<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "<leader>ar", "<cmd>lua vim.lsp.buf.rename()<CR>", { remap = true, silent = true })
 -- vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", { remap = true, silent = true })
@@ -268,11 +269,15 @@ vim.keymap.set("n", "--", "<space>bd", { remap = true, silent = true })
 -- })
 --
 function keymap_by_file_type()
+
+  -- vim.cmd('BlockOn')
   local buf = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
     vim.keymap.set('n', '<leader>as', ":AsyncStop<cr>", { remap = true, silent = true })
     vim.keymap.set('n', '<F3>', ":w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
+    vim.keymap.set('i', '<F3>', "<esc>:w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
     vim.keymap.set('n', '<F4>', ":w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
+    vim.keymap.set('i', '<F4>', "<esc>:w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
   -- print(ft)
   if ft == "python" then
     vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
@@ -375,3 +380,4 @@ function toggle_enter_action()
         enter_counter = 0
     end
 end
+-- vim.keymap.set("n", "<S-CR>", "<CR>", { desc = "git diff with last commit", silent = true, noremap = true })
