@@ -5,6 +5,10 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 -- git keymap
+vim.keymap.set("n", "<F9>", ":AerialToggle<cr>", { desc = "", remap = true, silent = true })
+vim.keymap.set("i", "<F9>", "<esc>:AerialToggle<cr>i", { desc = "", remap = true, silent = true })
+vim.keymap.set("i", ">", ">>", { desc = "", remap = true, silent = true })
+vim.keymap.set("n", ">", ">>", { desc = "", remap = true, silent = true })
 vim.keymap.set("n", "<leader>gn", ":DiffviewOpen<cr>", { desc = "git diff with last commit", remap = true, silent = true })
 vim.keymap.set("n", "<leader>ga", ":DiffviewFileHistory<cr>", { desc = "git diff with last commit", remap = true, silent = true })
 --
@@ -304,6 +308,7 @@ vim.keymap.set("i", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<esc>", "<esc><esc>", { silent = true, remap = true })
 vim.keymap.set("n", "\\a", "ggVG", { silent = true, remap = true })
 vim.keymap.set("n", "\\q", ":qa!<cr>", { silent = true, remap = true })
+vim.keymap.set("i", "\\q", "<esc>:qa!<cr>", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
 
@@ -368,6 +373,20 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 local enter_counter = 0
 
 -- 设置 <Enter> 键在不同次数下执行不同命令
+-- 保存原始的键映射
+-- local original_enter_mapping = vim.api.nvim_get_keymap('n')
+-- print(original_enter_mapping)
+-- local myTable = original_enter_mapping
+-- for key, value in pairs(myTable) do
+--     print(key, value)
+--   for k, v in pairs(value) do
+--     print(k, v)
+--   end
+-- end
+
+-- vim.api.nvim_set_keymap('n', '<S-CR>', original_enter_mapping, { noremap = true, silent = true })
+vim.keymap.set("n", "z<CR>", "<CR>", { desc = "original cr", silent = true, noremap = true })
+
 vim.api.nvim_set_keymap('n', '<CR>', ':lua toggle_enter_action()<CR>', { noremap = true, silent = true })
 
 -- 切换命令的函数
@@ -380,4 +399,3 @@ function toggle_enter_action()
         enter_counter = 0
     end
 end
--- vim.keymap.set("n", "<S-CR>", "<CR>", { desc = "git diff with last commit", silent = true, noremap = true })

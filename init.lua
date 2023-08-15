@@ -181,9 +181,10 @@ navbuddy.setup {
                             -- or an array with eight chars building up the border in a clockwise fashion
                             -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
         -- size = "60%",       -- Or table format example: { height = "40%", width = "100%"}
-        size = { height = "80%", width = "60%"},       -- Or table format example: { height = "40%", width = "100%"}
-        -- position = "50%",   -- Or table format example: { row = "100%", col = "0%"}
-        position = {row = "50%", col = "100%"},   -- Or table format example: { row = "100%", col = "0%"}
+        size = "80%",       -- Or table format example: { height = "40%", width = "100%"}
+        -- size = { height = "80%", width = "60%"},       -- Or table format example: { height = "40%", width = "100%"}
+        position = "50%",   -- Or table format example: { row = "100%", col = "0%"}
+        -- position = {row = "50%", col = "100%"},   -- Or table format example: { row = "100%", col = "0%"}
         scrolloff = nil,    -- scrolloff value within navbuddy window
         sections = {
             left = {
@@ -310,3 +311,5 @@ navbuddy.setup {
     }
 }
 -- navbuddy end
+
+require("luasnip.loaders.from_vscode").load({ paths = { "/home/wyl/.config/nvim/my-snippets" } }) -- Load snippets from my-snippets folder

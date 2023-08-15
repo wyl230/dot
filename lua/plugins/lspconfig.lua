@@ -13,6 +13,7 @@ return {
   opts = {
     servers = {
       -- Ensure mason installs the server
+      marksman = {},
       pyright = {},
       ruff_lsp = {},
       -- clangd = {
