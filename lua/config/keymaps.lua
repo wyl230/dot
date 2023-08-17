@@ -5,20 +5,24 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 -- git keymap
+vim.keymap.set("n", "<leader>wq", ":tabc<esc>", { desc = "tabc: close diff view", remap = true, silent = true })
+vim.keymap.set("n", "<leader>y", "viwy", { desc = "copy word", remap = true, silent = true })
+vim.keymap.set("n", "<leader>Y", "viWy", { desc = "copy word", remap = true, silent = true })
+vim.keymap.set("n", "<leader>v", "viw", { desc = "select a word", remap = true, silent = true })
+vim.keymap.set("n", "<leader>V", "viW", { desc = "select a word", remap = true, silent = true })
 vim.keymap.set("n", "<F9>", ":AerialToggle<cr>", { desc = "", remap = true, silent = true })
 vim.keymap.set("i", "<F9>", "<esc>:AerialToggle<cr>i", { desc = "", remap = true, silent = true })
-vim.keymap.set("i", ">", ">>", { desc = "", remap = true, silent = true })
 vim.keymap.set("n", ">", ">>", { desc = "", remap = true, silent = true })
 vim.keymap.set("n", "<leader>gn", ":DiffviewOpen<cr>", { desc = "git diff with last commit", remap = true, silent = true })
 vim.keymap.set("n", "<leader>ga", ":DiffviewFileHistory<cr>", { desc = "git diff with last commit", remap = true, silent = true })
 --
 
-vim.keymap.set("n", "<leader>we", "<C-W>p", { desc = "Other window", remap = true })
+vim.keymap.set("n", "<leader>wq", "<C-W>c", { desc = "Other window", remap = true })
 vim.keymap.set("n", "<c-c>", ":q<CR>", { silent = true })
 vim.keymap.set("i", "jj", "<esc>", { silent = true })
 vim.keymap.set("n", "<enter>", "<esc>", { silent = true })
-vim.keymap.set("n", "<down>", "<c-d>", { silent = true })
-vim.keymap.set("n", "<up>", "<c-u>", { silent = true })
+vim.keymap.set("n", "<down>", "<c-d>zz", { silent = true })
+vim.keymap.set("n", "<up>", "<c-u>zz", { silent = true })
 -- vim.keymap.set("n", "<left>", "<c-", { silent = true })
 vim.keymap.set("i", "jk", "<esc>", { silent = true })
 vim.keymap.set("v", "q", "<esc>", { silent = true })
@@ -54,6 +58,9 @@ vim.keymap.set("n", "<leader>gw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
 vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { remap = true, silent = true })
 -- vim.keymap.set("n", "<leader>dd", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "<leader>dd", ":Navbuddy<CR>", { remap = true, silent = true })
+vim.keymap.set("n", "\\d", ":Navbuddy<CR>", { remap = true, silent = true })
+vim.keymap.set("n", "\\w", "<C-W>p", { desc = "Other window", remap = true })
+
 vim.keymap.set("n", "<leader>ar", "<cmd>lua vim.lsp.buf.rename()<CR>", { remap = true, silent = true })
 -- vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", { remap = true, silent = true })
@@ -313,6 +320,7 @@ vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
 
 vim.keymap.set("i", "<c-\\>", "codeium#Accept()", { silent = true, remap = true, nowait = true, expr = true })
+vim.keymap.set("i", "<A-l>", "codeium#Accept()", { silent = true, remap = true, nowait = true, expr = true })
 vim.keymap.set("i", "<c-e>", "codeium#Complete()", { silent = true, remap = true, nowait = true, expr = true })
   -- imap <script><silent><nowait><expr> qwe 
 
