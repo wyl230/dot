@@ -5,6 +5,13 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 -- git keymap
+vim.keymap.set("n", "gh", "^", { desc = "$", remap = true, silent = true })
+vim.keymap.set("n", "gl", "$", { desc = "^", remap = true, silent = true })
+vim.keymap.set("n", "dgh", "d^", { desc = "$", remap = true, silent = true })
+-- vim.keymap.set("n", "dgl", "d$", { desc = "^", remap = true, silent = true })
+vim.keymap.set("v", "gh", "^", { desc = "$", remap = true, silent = true })
+vim.keymap.set("v", "gl", "$", { desc = "^", remap = true, silent = true })
+
 vim.keymap.set("n", "<leader>wq", ":tabc<esc>", { desc = "tabc: close diff view", remap = true, silent = true })
 vim.keymap.set("n", "<leader>y", "viwy", { desc = "copy word", remap = true, silent = true })
 vim.keymap.set("n", "<leader>Y", "viWy", { desc = "copy word", remap = true, silent = true })
@@ -76,6 +83,7 @@ vim.keymap.set("n", "]e", "<cmd>NextDiagnosticCycle<CR>", { remap = true, silent
 
 -- kill new definition buffer
 vim.keymap.set("n", "--", "<space>bd", { remap = true, silent = true })
+vim.keymap.set("n", "Q", "<space>bd", { remap = true, silent = true })
 
 
 -- vim.keymap.set("n", "<c-/>", lazyterm, { slient = true, remap = true })
@@ -314,7 +322,8 @@ vim.keymap.set("n", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<esc>", "<esc><esc>", { silent = true, remap = true })
 vim.keymap.set("n", "\\a", "ggVG", { silent = true, remap = true })
-vim.keymap.set("n", "\\q", ":qa!<cr>", { silent = true, remap = true })
+vim.keymap.set("n", "\\q", ":qa<cr>", { silent = true, remap = true }) -- for safety
+-- vim.keymap.set("n", "\\q", ":qa!<cr>", { silent = true, remap = true })
 vim.keymap.set("i", "\\q", "<esc>:qa!<cr>", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
