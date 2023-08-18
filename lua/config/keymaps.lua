@@ -10,6 +10,13 @@ vim.keymap.set("v", "<leader>t", ":Translate<cr>", { desc = "translate", remap =
 vim.keymap.set("n", "\\t", ":TranslateW<cr>", { desc = "translate", remap = true, silent = true })
 vim.keymap.set("v", "\\t", ":TranslateW<cr>", { desc = "translate", remap = true, silent = true })
 
+-- vim.keymap.set("n", "<leader>t", ":Translate<cr>", { desc = "translate", remap = true, silent = true })
+-- vim.keymap.set("v", "<leader>t", ":Translate<cr>", { desc = "translate", remap = true, silent = true })
+vim.keymap.set("n", "\\rr", ":Translate --target_lang=EN --source_lang=ZH<cr>", { desc = "translate to en", remap = true, silent = true })
+vim.keymap.set("v", "\\rr", ":Translate --target_lang=EN --source_lang=ZH<cr>", { desc = "translate to en", remap = true, silent = true })
+vim.keymap.set("n", "\\rt", ":TranslateR --target_lang=EN --source_lang=ZH<cr>", { desc = "translate to en", remap = true, silent = true })
+vim.keymap.set("v", "\\rt", ":TranslateR --target_lang=EN --source_lang=ZH<cr>", { desc = "translate to en", remap = true, silent = true })
+
 vim.keymap.set("n", "gh", "^", { desc = "$", remap = true, silent = true })
 vim.keymap.set("n", "gl", "$", { desc = "^", remap = true, silent = true })
 vim.keymap.set("n", "dgh", "d^", { desc = "$", remap = true, silent = true })
