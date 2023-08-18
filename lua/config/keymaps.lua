@@ -5,6 +5,11 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 -- git keymap
+vim.keymap.set("n", "<leader>t", ":Translate<cr>", { desc = "translate", remap = true, silent = true })
+vim.keymap.set("v", "<leader>t", ":Translate<cr>", { desc = "translate", remap = true, silent = true })
+vim.keymap.set("n", "\\t", ":TranslateW<cr>", { desc = "translate", remap = true, silent = true })
+vim.keymap.set("v", "\\t", ":TranslateW<cr>", { desc = "translate", remap = true, silent = true })
+
 vim.keymap.set("n", "gh", "^", { desc = "$", remap = true, silent = true })
 vim.keymap.set("n", "gl", "$", { desc = "^", remap = true, silent = true })
 vim.keymap.set("n", "dgh", "d^", { desc = "$", remap = true, silent = true })
