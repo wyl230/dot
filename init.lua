@@ -72,29 +72,29 @@ require'lspconfig'.clangd.setup{
 -- }
 --
 
-require'lspconfig'.pylsp.setup {
-  settings = {
-    pylsp = {
-      plugins = {
-        ruff = {
-          enabled = false
-        },
-        pyright = {
-          enabled = false
-        },
-        pycodestyle = {
-          enabled = false
-        },
-        pyflakes = {
-          enabled = false
-        },
-        mccabe = {
-          enabled = false
-        }
-      }
-    }
-  },
-}
+-- require'lspconfig'.pylsp.setup {
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         ruff = {
+--           enabled = false
+--         },
+--         pyright = {
+--           enabled = false
+--         },
+--         pycodestyle = {
+--           enabled = false
+--         },
+--         pyflakes = {
+--           enabled = false
+--         },
+--         mccabe = {
+--           enabled = false
+--         }
+--       }
+--     }
+--   },
+-- }
 --
 --
 
