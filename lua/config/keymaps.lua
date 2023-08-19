@@ -5,6 +5,8 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 -- git keymap
+vim.keymap.set("n", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
+vim.keymap.set("v", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
 
 vim.keymap.set("n", "ga", ":lua require('tsht').nodes()<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
 
@@ -58,7 +60,7 @@ vim.keymap.set('i', '<c-l>', "<esc>gccA ", { remap = true })
 vim.keymap.set('v', '<c-l>', "gc", { remap = true })
 vim.keymap.set('n', '<leader>cw', "yiw", { remap = true })
 vim.keymap.set('n', '<leader>pw', "viwp", { remap = true })
-vim.keymap.set('n', '<leader>o', ":lua vim.lsp.buf.code_action()<enter>", { remap = true })
+vim.keymap.set('n', '<leader>o', ":lua vim.lsp.buf.code_action()<enter>", { remap = true, silent = true })
 vim.keymap.set('n', '<leader>ro', ":!x run<cr>", { remap = true, silent = true })
 vim.keymap.set('n', '<leader>rr', ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })
 vim.keymap.set('n', '<leader>n', ":Telescope notify<cr>", { remap = true, silent = true })
