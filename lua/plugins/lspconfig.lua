@@ -14,7 +14,20 @@ return {
     servers = {
       -- Ensure mason installs the server
       marksman = {},
-      pyright = {},
+      pyright = {
+        settings = {
+          pyright = { autoImportCompletion = true },
+          python = {
+            pythonPath = "/home/wyl/anaconda3/bin/python3",
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = "openFilesOnly",
+              useLibraryCodeForTypes = true,
+              typeCheckingMode = "off",
+            },
+          },
+        },
+      },
       ruff_lsp = {},
       -- clangd = {
       --   keys = {
