@@ -1,15 +1,17 @@
-  {
+{
       "name": "my-snippets",
       "engine": {
-          "vscode": "^1.11.0"
+            "vscode": "^1.11.0"
       },
       "contributes": {
-          "snippets": [
-              
-              {
-                  "language": "cpp",
-                  "path": "./my-snippets.json"
-              }
-          ]
+            "snippets": [
+                  {
+                        "language": "cpp",
+                        "path": "./my-snippets.json"
+                  }
+            ]
+      },
+      "dependencies": {
+            "remark": "^14.0.3"
       }
-  }
+}

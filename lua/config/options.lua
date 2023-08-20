@@ -5,3 +5,4 @@
 --
 local opt = vim.opt
 opt.wrap = true
+vim.g.codeium_disable_bindings = 1
