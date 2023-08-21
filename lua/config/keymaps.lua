@@ -345,7 +345,7 @@ vim.keymap.set("i", "<esc>", "<esc><esc>", { silent = true, remap = true })
 vim.keymap.set("n", "\\a", "ggVG", { silent = true, remap = true })
 vim.keymap.set("n", "\\q", ":qa<cr>", { silent = true, remap = true }) -- for safety
 -- vim.keymap.set("n", "\\q", ":qa!<cr>", { silent = true, remap = true })
-vim.keymap.set("i", "\\q", "<esc>:qa!<cr>", { silent = true, remap = true })
+vim.keymap.set("i", "\\q", "<esc>:qa<cr>", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
 
