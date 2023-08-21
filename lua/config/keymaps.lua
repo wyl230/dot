@@ -321,6 +321,7 @@ function keymap_by_file_type()
   if ft == "python" then
     vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
     vim.keymap.set('i', '<F5>', "<esc>:!ap %<cr>", { remap = true, silent = true })
+    vim.keymap.set('n', '<leader>cf', ":!black %<cr>", { remap = true, silent = true })
   elseif ft == "cpp" then
     -- vim.keymap.set('n', '<F5>', ":!echo 23", { remap = true, silent = true })
     vim.keymap.set('n', '<F5>', ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })

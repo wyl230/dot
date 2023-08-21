@@ -39,3 +39,10 @@ vim.cmd([[
 local formatoptions = remove_formatoptions(vim.opt_local.formatoptions:get())
 vim.opt_local.formatoptions = table.concat(formatoptions, '')
 
+-- add auto format for python using black
+local group = vim.api.nvim_create_augroup("Black", { clear = true })
+vim.api.nvim_create_autocmd("bufWritePost", {
+	pattern = "*.py",
+	command = "silent !black %",
+	group = group,
+})
