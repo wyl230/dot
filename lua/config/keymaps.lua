@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>v", "viw", { desc = "select a word", remap = true, 
 vim.keymap.set("n", "<leader>V", "viW", { desc = "select a word", remap = true, silent = true })
 vim.keymap.set("n", "<F9>", ":AerialToggle<cr>", { desc = "", remap = true, silent = true })
 vim.keymap.set("i", "<F9>", "<esc>:AerialToggle<cr>i", { desc = "", remap = true, silent = true })
-vim.keymap.set("n", ">", ">>", { desc = "", remap = true, silent = true })
+-- vim.keymap.set("n", ">", ">>", { desc = "", remap = true, silent = true })
 vim.keymap.set("n", "<leader>gn", ":DiffviewOpen<cr>", { desc = "git diff with last commit", remap = true, silent = true })
 vim.keymap.set("n", "<leader>ga", ":DiffviewFileHistory<cr>", { desc = "git diff with last commit", remap = true, silent = true })
 --
@@ -84,6 +84,7 @@ vim.keymap.set("n", "<leader>gw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>",
 
 vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { remap = true, silent = true })
 -- vim.keymap.set("n", "<leader>dd", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", { remap = true, silent = true })
+vim.keymap.set("n", "<leader>dl", ":LspRestart<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "<leader>dd", ":Navbuddy<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "\\d", ":Navbuddy<CR>", { remap = true, silent = true })
 vim.keymap.set("n", "\\w", "<C-W>p", { desc = "Other window", remap = true })
