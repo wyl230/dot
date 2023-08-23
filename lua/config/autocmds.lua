@@ -40,9 +40,70 @@ local formatoptions = remove_formatoptions(vim.opt_local.formatoptions:get())
 vim.opt_local.formatoptions = table.concat(formatoptions, '')
 
 -- add auto format for python using black
-local group = vim.api.nvim_create_augroup("Black", { clear = true })
-vim.api.nvim_create_autocmd("bufWritePost", {
-	pattern = "*.py",
-	command = "silent !black %",
-	group = group,
-})
+-- local group = vim.api.nvim_create_augroup("Black", { clear = true })
+-- vim.api.nvim_create_autocmd("bufWritePost", {
+-- 	pattern = "*.py",
+-- 	command = "silent !black %",
+-- 	group = group,
+-- })
+
+
+function async_black()
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  local uv = require("luv")
+  local stdout = uv.new_pipe(false)
+  local stderr = uv.new_pipe(false)
+  local stdin = uv.new_pipe(false)
+
+  local handle = uv.spawn('black', {
+    args = {'--fast', '-q', '-'},
+    stdio = {stdin, stdout, stderr},
+    cwd = vim.loop.cwd(),
+    detached = true,
+  }, function(code, signal)
+    -- print("black process exited with code: " .. code .. ", signal: " .. signal)
+  end)
+
+  local data = {}
+  uv.read_start(stdout, function(err, chunk)
+    assert(not err, err)
+    if chunk then
+      table.insert(data, chunk)
+    else
+      local all_data = table.concat(data)
+      vim.schedule(function()
+        local save_view = vim.fn.winsaveview()
+        local curpos = vim.fn.getcurpos()
+        local save_jumplist = vim.fn.getjumplist()[1]
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(all_data:sub(1, -2), '\n'))
+        for i = 1, #save_jumplist do
+          if save_jumplist[i].bufnr == bufnr then
+            vim.cmd('normal! ' .. save_jumplist[i].lnum .. 'G' .. save_jumplist[i].col .. '|')
+          end
+        end
+        vim.cmd('normal! ' .. curpos[2] .. 'G' .. curpos[3] .. '|')
+        vim.fn.winrestview(save_view)
+      end)
+    end
+  end)
+
+  uv.read_start(stderr, function(err, data)
+    assert(not err, err)
+    if data then
+      print("stderr data: " .. data)
+    end
+  end)
+
+  local content = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local all_text = table.concat(content, '\n')
+  stdin:write(all_text)
+  stdin:shutdown()
+end
+
+vim.cmd([[
+  augroup async_black
+    autocmd!
+    autocmd FileType python autocmd BufWritePost <buffer> lua async_black()
+  augroup END
+]])

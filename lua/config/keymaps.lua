@@ -5,6 +5,7 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 -- git keymap
+vim.keymap.set("v", "y", "ygv<esc>", { desc = "yank to ori", remap = true, silent = true })
 vim.keymap.set("n", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
 vim.keymap.set("v", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
 
@@ -323,7 +324,7 @@ function keymap_by_file_type()
   if ft == "python" then
     vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
     vim.keymap.set('i', '<F5>', "<esc>:!ap %<cr>", { remap = true, silent = true })
-    vim.keymap.set('n', '<leader>cf', ":!black %<cr>", { remap = true, silent = true })
+    vim.keymap.set('n', '<leader>cf', ":lua async_black()<cr>", { remap = true, silent = true })
   elseif ft == "cpp" then
     -- vim.keymap.set('n', '<F5>', ":!echo 23", { remap = true, silent = true })
     vim.keymap.set('n', '<F5>', ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })
