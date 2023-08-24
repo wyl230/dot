@@ -53,12 +53,13 @@ vim.keymap.set("n", "<down>", "<c-d>zz", { silent = true })
 vim.keymap.set("n", "<up>", "<c-u>zz", { silent = true })
 -- vim.keymap.set("n", "<left>", "<c-", { silent = true })
 vim.keymap.set("i", "jk", "<esc>", { silent = true })
+vim.keymap.set("i", "kj", "<esc>", { silent = true })
 vim.keymap.set("v", "q", "<esc>", { silent = true })
 -- vim.keymap.set("x", "jj", "<esc>", { silent = true })
 vim.keymap.set('n', '<leader>jk', vim.cmd.UndotreeToggle)
-vim.keymap.set('n', '<c-l>', "gcc", { remap = true })
-vim.keymap.set('i', '<c-l>', "<esc>gccA ", { remap = true })
-vim.keymap.set('v', '<c-l>', "gc", { remap = true })
+vim.keymap.set('n', '<c-[>', "gcc", { remap = true })
+vim.keymap.set('i', '<c-[>', "<esc>gccA ", { remap = true })
+vim.keymap.set('v', '<c-[>', "gc", { remap = true })
 vim.keymap.set('n', '<leader>cw', "yiw", { remap = true })
 vim.keymap.set('n', '<leader>pw', "viwp", { remap = true })
 vim.keymap.set('n', '<leader>o', ":lua vim.lsp.buf.code_action()<enter>", { remap = true, silent = true })
@@ -106,6 +107,7 @@ vim.keymap.set("n", "]e", "<cmd>NextDiagnosticCycle<CR>", { remap = true, silent
 
 -- kill new definition buffer
 vim.keymap.set("n", "--", "<space>bd", { remap = true, silent = true })
+vim.keymap.set("n", "_", "<space>wd", { remap = true, silent = true })
 vim.keymap.set("n", "Q", "<space>bd", { remap = true, silent = true })
 
 

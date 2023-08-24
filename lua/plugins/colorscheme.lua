@@ -4,6 +4,7 @@ return {
   -- { 'jcdickinson/codeium.nvim' },
   { "EdenEast/nightfox.nvim" },
   { "rebelot/kanagawa.nvim" },
+  { "dotsilas/darcubox-nvim" },
   { "Mofiqul/dracula.nvim" },
   -- Configure LazyVim to load gruvbox
   {

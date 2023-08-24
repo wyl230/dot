@@ -40,12 +40,12 @@ local formatoptions = remove_formatoptions(vim.opt_local.formatoptions:get())
 vim.opt_local.formatoptions = table.concat(formatoptions, '')
 
 -- add auto format for python using black
--- local group = vim.api.nvim_create_augroup("Black", { clear = true })
--- vim.api.nvim_create_autocmd("bufWritePost", {
--- 	pattern = "*.py",
--- 	command = "silent !black %",
--- 	group = group,
--- })
+local group = vim.api.nvim_create_augroup("Black", { clear = true })
+vim.api.nvim_create_autocmd("bufWritePost", {
+	pattern = "*.py",
+	command = "silent !black %",
+	group = group,
+})
 
 
 function async_black()
@@ -99,11 +99,12 @@ function async_black()
   local all_text = table.concat(content, '\n')
   stdin:write(all_text)
   stdin:shutdown()
+
 end
 
-vim.cmd([[
-  augroup async_black
-    autocmd!
-    autocmd FileType python autocmd BufWritePost <buffer> lua async_black()
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup async_black
+--     autocmd!
+--     autocmd FileType python autocmd BufWritePost <buffer> lua async_black()
+--   augroup END
+-- ]])
