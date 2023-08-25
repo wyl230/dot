@@ -13,6 +13,11 @@ return {
   opts = {
     servers = {
       -- Ensure mason installs the server
+      -- pylance = { settings = { python = { analysis = { inlayHints = {
+      --   variableTypes = true,
+      --   functionReturnTypes = true,
+      --   callArgumentNames = true
+      -- }}}}},
       marksman = {},
       pyright = {
         settings = {
