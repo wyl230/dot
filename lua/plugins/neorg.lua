@@ -17,5 +17,6 @@ return {
   end,
   run = ":Neorg sync-parsers",
   requires = "nvim-lua/plenary.nvim",
-  -- lazy = true
+  event = "VeryLazy",
+  enabled = false
 }

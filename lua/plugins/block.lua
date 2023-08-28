@@ -1,6 +1,7 @@
 return {
-    "HampusHauffman/block.nvim",
-    config = function()
-        require("block").setup({})
-    end
+  "HampusHauffman/block.nvim",
+  config = function()
+    require("block").setup({})
+  end,
+  event = "VeryLazy"
 }
