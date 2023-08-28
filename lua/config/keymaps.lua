@@ -322,6 +322,7 @@ function keymap_by_file_type()
     vim.keymap.set('i', '<F3>', "<esc>:w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
     vim.keymap.set('n', '<F4>', ":w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
     vim.keymap.set('i', '<F4>', "<esc>:w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
+    vim.keymap.set('i', '<F10>', "<esc>:w<cr>:AsyncTask file-buildrun<cr>", { remap = true, silent = true })
   -- print(ft)
   if ft == "python" then
     vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
