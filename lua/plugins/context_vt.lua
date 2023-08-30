@@ -1,3 +1,4 @@
 return {
-    "haringsrob/nvim_context_vt"
+    "haringsrob/nvim_context_vt",
+  enable = false,
 }
