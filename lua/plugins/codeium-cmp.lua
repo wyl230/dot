@@ -1,14 +1,32 @@
+-- return {
+--   -- The official plugin does not support nvim-cmp, use a community one instead.
+--   {
+--     "jcdickinson/codeium.nvim",
+--     dependencies = {
+--       "nvim-lua/plenary.nvim",
+--       "hrsh7th/nvim-cmp",
+--     },
+--     config = function()
+--       require("codeium").setup({
+--       })
+--     end,
+--   },
+-- }
 return {
-  -- The official plugin does not support nvim-cmp, use a community one instead.
-  {
-    "jcdickinson/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
+    {
+        "jcdickinson/http.nvim",
+        build = "cargo build --workspace --release"
     },
-    config = function()
-      require("codeium").setup({
-      })
-    end,
-  },
+    {
+        "jcdickinson/codeium.nvim",
+        dependencies = {
+            "jcdickinson/http.nvim",
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require("codeium").setup({
+            })
+        end
+    }
 }
