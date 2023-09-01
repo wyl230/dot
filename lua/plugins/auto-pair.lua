@@ -1,7 +1,7 @@
 return {
 
   {
-    'wind-wp/nvim-autopairs',
+    'windwp/nvim-autopairs',
     event = "InsertEnter",
     -- opt = {}
     config = function()
