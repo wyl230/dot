@@ -5,7 +5,8 @@ return {
     vim.keymap.set("n", "<leader>cg", ":CMakeGenerate<cr>", { desc = "cmake generate", remap = true, silent = true })
     vim.keymap.set("n", "<leader>cb", ":CMakeBuild<cr>", { desc = "cmake build", remap = true, silent = true })
     vim.keymap.set("n", "<leader>rj", ":CMakeRun<cr>", { desc = "cmake run", remap = true, silent = true })
-  end
+  end,
+  event = "VeryLazy"
   --
   -- config = function()
   --   require("cmake-tools").setup {

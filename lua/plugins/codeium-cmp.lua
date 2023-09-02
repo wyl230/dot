@@ -13,20 +13,22 @@
 --   },
 -- }
 return {
-    {
-        "jcdickinson/http.nvim",
-        build = "cargo build --workspace --release"
+  {
+    "jcdickinson/http.nvim",
+    build = "cargo build --workspace --release",
+    event = "VeryLazy",
+  },
+  {
+    "jcdickinson/codeium.nvim",
+    dependencies = {
+      "jcdickinson/http.nvim",
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
     },
-    {
-        "jcdickinson/codeium.nvim",
-        dependencies = {
-            "jcdickinson/http.nvim",
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({
-            })
-        end
-    }
+    config = function()
+      require("codeium").setup({
+      })
+    end,
+    event = "VeryLazy",
+  }
 }
