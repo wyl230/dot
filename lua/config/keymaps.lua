@@ -4,7 +4,9 @@
 --
 --
 -- This file is automatically loaded by lazyvim.config.init
--- git keymap
+vim.keymap.set("n", "U", "<c-r>", { silent = true, desc = "undo" })
+
+vim.keymap.set("n", "<leader>dr", ":HydrateNow<cr>", { silent = true, desc = "Hydrate Now" })
 vim.keymap.set("n", "<leader>hz", ":ZenMode<cr>", { desc = "yank to ori", remap = true, silent = true })
 vim.keymap.set("v", "y", "ygv<esc>", { desc = "yank to ori", remap = true, silent = true })
 vim.keymap.set("n", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
