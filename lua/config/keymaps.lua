@@ -4,6 +4,10 @@
 --
 --
 -- This file is automatically loaded by lazyvim.config.init
+
+vim.keymap.set("n", "mm", "zc", { silent = true, desc = "zc" })
+vim.keymap.set("n", "mk", "zo", { silent = true, desc = "zo" })
+
 vim.keymap.set("n", "U", "<c-r>", { silent = true, desc = "undo" })
 
 vim.keymap.set("n", "<leader>dr", ":HydrateNow<cr>", { silent = true, desc = "Hydrate Now" })
@@ -434,7 +438,7 @@ local enter_counter = 0
 -- vim.api.nvim_set_keymap('n', '<S-CR>', original_enter_mapping, { noremap = true, silent = true })
 vim.keymap.set("n", "z<CR>", "<CR>", { desc = "original cr", silent = true, noremap = true })
 
-vim.api.nvim_set_keymap('n', '<CR>', ':lua toggle_enter_action()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<CR>', ':lua toggle_enter_action()<CR>', { noremap = true, silent = true })
 
 -- 切换命令的函数
 function toggle_enter_action()
