@@ -22,15 +22,22 @@ return {
   },
   -- 下面的从nv-ide中
   {
-    "mrjones2014/nvim-ts-rainbow",
+    "HiPhish/nvim-ts-rainbow2",
     lazy = false,
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      require("nvim-treesitter.configs").setup({
         rainbow = {
           enable = true,
-        }
-      }
+          -- list of languages you want to disable the plugin for
+          -- disable = { "jsx", "cpp" },
+          -- Which query to use for finding delimiters
+          query = "rainbow-parens",
+          -- Highlight the entire buffer all at once
+          strategy = require("ts-rainbow").strategy.global,
+        },
+      })
     end,
+    enabled = true,
   },
 
   -- {
@@ -58,10 +65,10 @@ return {
     "nacro90/numb.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require("numb").setup{
+      require("numb").setup({
         show_numbers = true, -- Enable 'number' for the window while peeking
-        show_cursorline = true -- Enable 'cursorline' for the window while peeking
-      }
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      })
     end,
   },
 }
