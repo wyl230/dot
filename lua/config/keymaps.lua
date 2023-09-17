@@ -5,9 +5,11 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 
-
 -- Telescope
+vim.keymap.set("n", "qj", "5gj", { silent = true, desc = "fast" })
+vim.keymap.set("n", "qk", "5gk", { silent = true, desc = "fast" })
 vim.keymap.set("n", "dk", ":lua require('telescope.builtin').resume{}<cr>", { silent = true, desc = "prev" })
+
 vim.keymap.set("n", "ds", ":lua require('telescope.builtin').spell_suggest{}<cr>", { silent = true, desc = "prev" })
 vim.keymap.set("n", "<leader>dk", ":lua require('telescope.builtin').resume{}<cr>", { silent = true, desc = "prev" })
 vim.keymap.set("n", "<leader>df", ":lua require('telescope.builtin').", { desc = "prev" })
@@ -23,8 +25,12 @@ vim.keymap.set("v", "y", "ygv<esc>", { desc = "yank to ori", remap = true, silen
 vim.keymap.set("n", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
 vim.keymap.set("v", "\\s", ":SnipRun<cr>", { desc = "tree hopper, origin show hex", remap = true, silent = true })
 
-vim.keymap.set("n", "ga", ":lua require('tsht').nodes()<cr>",
-  { desc = "tree hopper, origin show hex", remap = true, silent = true })
+vim.keymap.set(
+  "n",
+  "ga",
+  ":lua require('tsht').nodes()<cr>",
+  { desc = "tree hopper, origin show hex", remap = true, silent = true }
+)
 
 vim.keymap.set("n", "]a", "]%", { desc = "]%", remap = true, silent = true })
 vim.keymap.set("n", "[a", "[%", { desc = "[%", remap = true, silent = true })
@@ -36,14 +42,30 @@ vim.keymap.set("v", "\\t", ":TranslateW<cr>", { desc = "translate", remap = true
 
 -- vim.keymap.set("n", "<leader>t", ":Translate<cr>", { desc = "translate", remap = true, silent = true })
 -- vim.keymap.set("v", "<leader>t", ":Translate<cr>", { desc = "translate", remap = true, silent = true })
-vim.keymap.set("n", "\\rr", ":Translate --target_lang=EN --source_lang=ZH<cr>",
-  { desc = "translate to en", remap = true, silent = true })
-vim.keymap.set("v", "\\rr", ":Translate --target_lang=EN --source_lang=ZH<cr>",
-  { desc = "translate to en", remap = true, silent = true })
-vim.keymap.set("n", "\\rt", ":TranslateR --target_lang=EN --source_lang=ZH<cr>",
-  { desc = "translate to en", remap = true, silent = true })
-vim.keymap.set("v", "\\rt", ":TranslateR --target_lang=EN --source_lang=ZH<cr>",
-  { desc = "translate to en", remap = true, silent = true })
+vim.keymap.set(
+  "n",
+  "\\rr",
+  ":Translate --target_lang=EN --source_lang=ZH<cr>",
+  { desc = "translate to en", remap = true, silent = true }
+)
+vim.keymap.set(
+  "v",
+  "\\rr",
+  ":Translate --target_lang=EN --source_lang=ZH<cr>",
+  { desc = "translate to en", remap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "\\rt",
+  ":TranslateR --target_lang=EN --source_lang=ZH<cr>",
+  { desc = "translate to en", remap = true, silent = true }
+)
+vim.keymap.set(
+  "v",
+  "\\rt",
+  ":TranslateR --target_lang=EN --source_lang=ZH<cr>",
+  { desc = "translate to en", remap = true, silent = true }
+)
 
 vim.keymap.set("n", "gh", "^", { desc = "$", remap = true, silent = true })
 vim.keymap.set("n", "gl", "$", { desc = "^", remap = true, silent = true })
@@ -60,10 +82,18 @@ vim.keymap.set("n", "<leader>V", "viW", { desc = "select a word", remap = true, 
 vim.keymap.set("n", "<F9>", ":AerialToggle<cr>", { desc = "", remap = true, silent = true })
 vim.keymap.set("i", "<F9>", "<esc>:AerialToggle<cr>i", { desc = "", remap = true, silent = true })
 -- vim.keymap.set("n", ">", ">>", { desc = "", remap = true, silent = true })
-vim.keymap.set("n", "<leader>gn", ":DiffviewOpen<cr>",
-  { desc = "git diff with last commit", remap = true, silent = true })
-vim.keymap.set("n", "<leader>ga", ":DiffviewFileHistory<cr>",
-  { desc = "git diff with last commit", remap = true, silent = true })
+vim.keymap.set(
+  "n",
+  "<leader>gn",
+  ":DiffviewOpen<cr>",
+  { desc = "git diff with last commit", remap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>ga",
+  ":DiffviewFileHistory<cr>",
+  { desc = "git diff with last commit", remap = true, silent = true }
+)
 --
 
 vim.keymap.set("n", "<leader>wq", "<C-W>c", { desc = "Other window", remap = true })
@@ -77,22 +107,22 @@ vim.keymap.set("i", "jk", "<esc>", { silent = true })
 vim.keymap.set("i", "kj", "<esc>", { silent = true })
 vim.keymap.set("v", "q", "<esc>", { silent = true })
 -- vim.keymap.set("x", "jj", "<esc>", { silent = true })
-vim.keymap.set('n', '<leader>jk', vim.cmd.UndotreeToggle)
-vim.keymap.set('n', "g'", "gcc", { remap = true })
-vim.keymap.set('i', "g'", "<esc>gccA ", { remap = true })
-vim.keymap.set('v', "g'", "gc", { remap = true })
-vim.keymap.set('n', '<leader>cw', "yiw", { remap = true })
-vim.keymap.set('n', '<leader>pw', "viwp", { remap = true })
-vim.keymap.set('n', '<leader>o', ":lua vim.lsp.buf.code_action()<enter>", { remap = true, silent = true })
-vim.keymap.set('n', '<leader>ro', ":!x run<cr>", { remap = true, silent = true })
-vim.keymap.set('n', '<leader>rr', ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })
-vim.keymap.set('n', '<leader>n', ":Telescope notify<cr>", { remap = true, silent = true })
+vim.keymap.set("n", "<leader>jk", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "g'", "gcc", { remap = true })
+vim.keymap.set("i", "g'", "<esc>gccA ", { remap = true })
+vim.keymap.set("v", "g'", "gc", { remap = true })
+vim.keymap.set("n", "<leader>cw", "yiw", { remap = true })
+vim.keymap.set("n", "<leader>pw", "viwp", { remap = true })
+vim.keymap.set("n", "<leader>o", ":lua vim.lsp.buf.code_action()<enter>", { remap = true, silent = true })
+vim.keymap.set("n", "<leader>ro", ":!x run<cr>", { remap = true, silent = true })
+vim.keymap.set("n", "<leader>rr", ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })
+vim.keymap.set("n", "<leader>n", ":Telescope notify<cr>", { remap = true, silent = true })
 -- vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
 -- vim.keymap.set('n', '<c-j>', ":res +1<cr>", { remap = true, silent = true })
 -- vim.keymap.set('n', '<c-k>', ":res -1<cr>", { remap = true, silent = true })
-vim.keymap.set('n', 'K', "i<enter><esc>", { remap = true, silent = true })
+vim.keymap.set("n", "K", "i<enter><esc>", { remap = true, silent = true })
 -- vim.keymap.set('n', '<leader>d', ":lua vim.lsp.buf.definition()<cr>", { remap = true, silent = true })
-vim.keymap.set('n', '<F2>', ":lua vim.lsp.buf.rename()<cr>", { remap = true, silent = true })
+vim.keymap.set("n", "<F2>", ":lua vim.lsp.buf.rename()<cr>", { remap = true, silent = true })
 
 -- lsp_keymaps()
 vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { remap = true, silent = true })
@@ -130,7 +160,6 @@ vim.keymap.set("n", "]e", "<cmd>NextDiagnosticCycle<CR>", { remap = true, silent
 vim.keymap.set("n", "--", "<space>bd", { remap = true, silent = true })
 vim.keymap.set("n", "_", "<space>wd", { remap = true, silent = true })
 vim.keymap.set("n", "Q", "<space>bd", { remap = true, silent = true })
-
 
 -- vim.keymap.set("n", "<c-/>", lazyterm, { slient = true, remap = true })
 -- vim.keymap.set("n", "<F6>", ":UndotreeToggle<enter>", {slient = true})
@@ -337,33 +366,33 @@ function keymap_by_file_type()
   -- vim.cmd('BlockOn')
   local buf = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-  vim.keymap.set('n', '<leader>as', ":AsyncStop<cr>", { remap = true, silent = true })
-  vim.keymap.set('n', '<F3>', ":w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
-  vim.keymap.set('i', '<F3>', "<esc>:w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
-  vim.keymap.set('n', '<F4>', ":w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
-  vim.keymap.set('i', '<F4>', "<esc>:w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
-  vim.keymap.set('i', '<F10>', "<esc>:w<cr>:AsyncTask file-buildrun<cr>", { remap = true, silent = true })
+  vim.keymap.set("n", "<leader>as", ":AsyncStop<cr>", { remap = true, silent = true })
+  vim.keymap.set("n", "<F3>", ":w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
+  vim.keymap.set("i", "<F3>", "<esc>:w<cr>:AsyncTask file-build<cr>", { remap = true, silent = true })
+  vim.keymap.set("n", "<F4>", ":w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
+  vim.keymap.set("i", "<F4>", "<esc>:w<cr>:AsyncTask file-run<cr>", { remap = true, silent = true })
+  vim.keymap.set("i", "<F10>", "<esc>:w<cr>:AsyncTask file-buildrun<cr>", { remap = true, silent = true })
   -- print(ft)
   if ft == "python" then
-    vim.keymap.set('n', '<F5>', ":!ap %<cr>", { remap = true, silent = true })
-    vim.keymap.set('i', '<F5>', "<esc>:!ap %<cr>", { remap = true, silent = true })
-    vim.keymap.set('n', '<leader>cf', ":lua async_black()<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<F5>", ":!ap %<cr>", { remap = true, silent = true })
+    vim.keymap.set("i", "<F5>", "<esc>:!ap %<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<leader>cf", ":lua async_black()<cr>", { remap = true, silent = true })
   elseif ft == "cpp" then
     -- vim.keymap.set('n', '<F5>', ":!echo 23", { remap = true, silent = true })
-    vim.keymap.set('n', '<F5>', ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })
-    vim.keymap.set('n', '<F7>', ":!g++ % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
-    vim.keymap.set('i', '<F7>', "<esc>:!g++ % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
-    vim.keymap.set('i', '<F5>', "<esc>:!x; and echo ========; and x run<cr>", { remap = true, silent = true })
-    vim.keymap.set('n', '<F6>', ":!x run<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<F5>", ":!x; and echo ========; and x run<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<F7>", ":!g++ % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
+    vim.keymap.set("i", "<F7>", "<esc>:!g++ % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
+    vim.keymap.set("i", "<F5>", "<esc>:!x; and echo ========; and x run<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<F6>", ":!x run<cr>", { remap = true, silent = true })
     vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
   elseif ft == "rust" then
-    vim.keymap.set('n', '<F5>', ":!rustc % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
-    vim.keymap.set('i', '<F5>', "<esc>:!rustc % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
-    vim.keymap.set('n', '<F6>', ":!./r<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<F5>", ":!rustc % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
+    vim.keymap.set("i", "<F5>", "<esc>:!rustc % -o r; and echo ========; and ./r<cr>", { remap = true, silent = true })
+    vim.keymap.set("n", "<F6>", ":!./r<cr>", { remap = true, silent = true })
   end
 end
 
-vim.cmd('autocmd FileType * lua keymap_by_file_type()')
+vim.cmd("autocmd FileType * lua keymap_by_file_type()")
 
 vim.keymap.set("n", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<c-p>", "<leader>fF", { silent = true, remap = true })
@@ -374,14 +403,12 @@ vim.keymap.set("n", "\\q", ":qa<cr>", { silent = true, remap = true }) -- for sa
 vim.keymap.set("i", "\\q", "<esc>:qa<cr>", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
 
-
 vim.keymap.set("i", "<c-\\>", "codeium#Accept()", { silent = true, remap = true, nowait = true, expr = true })
 vim.keymap.set("i", "<A-l>", "codeium#Accept()", { silent = true, remap = true, nowait = true, expr = true })
 vim.keymap.set("i", "<c-e>", "codeium#Complete()", { silent = true, remap = true, nowait = true, expr = true })
 -- imap <script><silent><nowait><expr> qwe
 
-vim.keymap.set("v", "\'", "%", { silent = true, remap = true, nowait = true, expr = false })
-
+vim.keymap.set("v", "'", "%", { silent = true, remap = true, nowait = true, expr = false })
 
 -- prime
 -- vim.g.mapleader = " "
@@ -456,10 +483,10 @@ vim.keymap.set("n", "z<CR>", "<CR>", { desc = "original cr", silent = true, nore
 -- 切换命令的函数
 function toggle_enter_action()
   if enter_counter == 0 then
-    vim.cmd('normal! zc')
+    vim.cmd("normal! zc")
     enter_counter = 1
   else
-    vim.cmd('normal! zo')
+    vim.cmd("normal! zo")
     enter_counter = 0
   end
 end
