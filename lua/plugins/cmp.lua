@@ -48,10 +48,11 @@ return {
   opts = function(_, opts)
     local cmp = require("cmp")
     opts.sources = cmp.config.sources({
-      { name = "vsnip" },
-      { name = "luasnip" },
+      { name = "copilot", group_index = 2 },
       { name = "codeium" },
       { name = "nvim_lsp" },
+      { name = "vsnip" },
+      { name = "luasnip" },
       { name = "buffer" },
       { name = "path" },
       { name = "crates" },
@@ -61,18 +62,14 @@ return {
     --   { name = "crates" },
     --   { name = "codeium" },
     -- }))
-    
-
 
     opts.formatting = {
-        format = require('lspkind').cmp_format({
-            mode = "symbol",
-            maxwidth = 50,
-            ellipsis_char = '...',
-            symbol_map = { Codeium = "AI", }
-        })
+      format = require("lspkind").cmp_format({
+        mode = "symbol",
+        maxwidth = 50,
+        ellipsis_char = "...",
+        symbol_map = { Codeium = "", Copilot = "" },
+      }),
     }
-
   end,
-
 }
