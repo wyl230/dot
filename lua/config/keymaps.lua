@@ -409,8 +409,9 @@ vim.cmd("autocmd FileType * lua keymap_by_file_type()")
 vim.keymap.set("n", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<c-p>", "<leader>fF", { silent = true, remap = true })
 vim.keymap.set("i", "<esc>", "<esc><esc>", { silent = true, remap = true })
-vim.keymap.set("n", "\\a", "ggVG", { silent = true, remap = true })
+vim.keymap.set({ "n", "v" }, "\\a", "ggVG", { silent = true, remap = true })
 vim.keymap.set("n", "\\q", ":qa<cr>", { silent = true, remap = true }) -- for safety
+vim.keymap.set("v", "\\q", "q:qa<cr>", { silent = true, remap = true }) -- for safety
 -- vim.keymap.set("n", "\\q", ":qa!<cr>", { silent = true, remap = true })
 vim.keymap.set("i", "\\q", "<esc>:qa<cr>", { silent = true, remap = true })
 vim.keymap.set("n", "\\y", "ggVGy", { silent = true, remap = true })
