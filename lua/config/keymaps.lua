@@ -5,6 +5,18 @@
 --
 -- This file is automatically loaded by lazyvim.config.init
 
+-- quickfix window height
+local function change_quickfix_height()
+  if vim.o.winheight ~= 40 then
+    vim.o.winheight = 40
+  else
+    vim.o.winheight = 20
+  end
+end
+
+vim.keymap.set("n", "<leader>jj", change_quickfix_height, { silent = true, desc = "restore" })
+
+vim.keymap.set("n", "<leader>k", "<leader>qs", { silent = true, desc = "restore" })
 -- Telescope
 vim.keymap.set("n", "qj", "5gj", { silent = true, desc = "fast" })
 vim.keymap.set("n", "qk", "5gk", { silent = true, desc = "fast" })
