@@ -37,12 +37,6 @@ require("telescope").load_extension("notify")
 -- require'lspconfig'.pyls_ms.setup{}
 -- require"nvim_lsp"
 
-require("lspconfig").clangd.setup({
-  on_attach = function()
-    require("clangd_extensions.inlay_hints").setup_autocmd()
-    require("clangd_extensions.inlay_hints").set_inlay_hints()
-  end,
-})
 -- require'lspconfig'.rust_analyzer.setup{}
 -- require'lspconfig'.lua_ls.setup {}
 --
@@ -304,7 +298,10 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 -- fix clangd offset problem
 require("lspconfig").clangd.setup({
-  on_attach = on_attach,
+  on_attach = function()
+    require("clangd_extensions.inlay_hints").setup_autocmd()
+    require("clangd_extensions.inlay_hints").set_inlay_hints()
+  end,
   capabilities = cmp_nvim_lsp.default_capabilities(),
   cmd = {
     "clangd",
