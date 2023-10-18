@@ -6,16 +6,15 @@
 -- autocmd ColorScheme * highlight Visual gui=reverse
 --
 
-
 -- 定义函数来移除formatoptions中的"c"、"r"和"o"选项
 local function remove_formatoptions(options)
-    local result = {}
-    for _, opt in ipairs(options) do
-        if opt ~= 'c' and opt ~= 'r' and opt ~= 'o' then
-            table.insert(result, opt)
-        end
+  local result = {}
+  for _, opt in ipairs(options) do
+    if opt ~= "c" and opt ~= "r" and opt ~= "o" then
+      table.insert(result, opt)
     end
-    return result
+  end
+  return result
 end
 
 -- 创建autocmd组
@@ -37,16 +36,15 @@ vim.cmd([[
 --                    - '2'    -- I am a programmer and not a writer
 --                    + 'j'    -- Join comments smartly
 local formatoptions = remove_formatoptions(vim.opt_local.formatoptions:get())
-vim.opt_local.formatoptions = table.concat(formatoptions, '')
+vim.opt_local.formatoptions = table.concat(formatoptions, "")
 
 -- add auto format for python using black
 local group = vim.api.nvim_create_augroup("Black", { clear = true })
 vim.api.nvim_create_autocmd("bufWritePost", {
-	pattern = "*.py",
-	command = "silent !black %",
-	group = group,
+  pattern = "*.py",
+  command = "silent !black %",
+  group = group,
 })
-
 
 function async_black()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -56,9 +54,9 @@ function async_black()
   local stderr = uv.new_pipe(false)
   local stdin = uv.new_pipe(false)
 
-  local handle = uv.spawn('black', {
-    args = {'--fast', '-q', '-'},
-    stdio = {stdin, stdout, stderr},
+  local handle = uv.spawn("black", {
+    args = { "--fast", "-q", "-" },
+    stdio = { stdin, stdout, stderr },
     cwd = vim.loop.cwd(),
     detached = true,
   }, function(code, signal)
@@ -76,13 +74,13 @@ function async_black()
         local save_view = vim.fn.winsaveview()
         local curpos = vim.fn.getcurpos()
         local save_jumplist = vim.fn.getjumplist()[1]
-        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(all_data:sub(1, -2), '\n'))
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(all_data:sub(1, -2), "\n"))
         for i = 1, #save_jumplist do
           if save_jumplist[i].bufnr == bufnr then
-            vim.cmd('normal! ' .. save_jumplist[i].lnum .. 'G' .. save_jumplist[i].col .. '|')
+            vim.cmd("normal! " .. save_jumplist[i].lnum .. "G" .. save_jumplist[i].col .. "|")
           end
         end
-        vim.cmd('normal! ' .. curpos[2] .. 'G' .. curpos[3] .. '|')
+        vim.cmd("normal! " .. curpos[2] .. "G" .. curpos[3] .. "|")
         vim.fn.winrestview(save_view)
       end)
     end
@@ -96,10 +94,9 @@ function async_black()
   end)
 
   local content = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-  local all_text = table.concat(content, '\n')
+  local all_text = table.concat(content, "\n")
   stdin:write(all_text)
   stdin:shutdown()
-
 end
 
 -- vim.cmd([[
@@ -112,34 +109,41 @@ end
 -- Treesitter automatic Python format strings
 vim.api.nvim_create_augroup("py-fstring", { clear = true })
 vim.api.nvim_create_autocmd("InsertCharPre", {
-    pattern = { "*.py" },
-    group = "py-fstring",
-    --- @param opts AutoCmdCallbackOpts
-    --- @return nil
-    callback = function(opts)
-        -- Only run if f-string escape character is typed
-        if vim.v.char ~= "{" then return end
+  pattern = { "*.py" },
+  group = "py-fstring",
+  --- @param opts AutoCmdCallbackOpts
+  --- @return nil
+  callback = function(opts)
+    -- Only run if f-string escape character is typed
+    if vim.v.char ~= "{" then
+      return
+    end
 
-        -- Get node and return early if not in a string
-        local node = vim.treesitter.get_node()
+    -- Get node and return early if not in a string
+    local node = vim.treesitter.get_node()
 
-        if not node then return end
-        if node:type() ~= "string" then node = node:parent() end
-        if not node or node:type() ~= "string" then return end
+    if not node then
+      return
+    end
+    if node:type() ~= "string" then
+      node = node:parent()
+    end
+    if not node or node:type() ~= "string" then
+      return
+    end
 
-        vim.print(node:type())
-        local row, col, _, _ = vim.treesitter.get_node_range(node)
+    vim.print(node:type())
+    local row, col, _, _ = vim.treesitter.get_node_range(node)
 
-        -- Return early if string is already a format string
-        local first_char = vim.api.nvim_buf_get_text(opts.buf, row, col, row, col + 1, {})[1]
-        vim.print("row " .. row .. " col " .. col)
-        vim.print("char: '" .. first_char .. "'")
-        if first_char == "f" then return end
+    -- Return early if string is already a format string
+    local first_char = vim.api.nvim_buf_get_text(opts.buf, row, col, row, col + 1, {})[1]
+    vim.print("row " .. row .. " col " .. col)
+    vim.print("char: '" .. first_char .. "'")
+    if first_char == "f" then
+      return
+    end
 
-        -- Otherwise, make the string a format string
-        vim.api.nvim_input("<Esc>m'" .. row + 1 .. "gg" .. col + 1 .. "|if<Esc>`'la")
-    end,
+    -- Otherwise, make the string a format string
+    vim.api.nvim_input("<Esc>m'" .. row + 1 .. "gg" .. col + 1 .. "|if<Esc>`'la")
+  end,
 })
-
-
-

@@ -80,9 +80,9 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "gh", "^", { desc = "$", remap = true, silent = true })
+vim.keymap.set("n", "gm", "<cmd>call cursor(0, len(getline('.'))/2)<cr>", { desc = "$", remap = true, silent = true })
 vim.keymap.set("n", "gl", "$", { desc = "^", remap = true, silent = true })
 vim.keymap.set("n", "dgh", "d^", { desc = "$", remap = true, silent = true })
--- vim.keymap.set("n", "dgl", "d$", { desc = "^", remap = true, silent = true })
 vim.keymap.set("v", "gh", "^", { desc = "$", remap = true, silent = true })
 vim.keymap.set("v", "gl", "$", { desc = "^", remap = true, silent = true })
 
@@ -490,6 +490,12 @@ local enter_counter = 0
 
 -- vim.api.nvim_set_keymap('n', '<S-CR>', original_enter_mapping, { noremap = true, silent = true })
 vim.keymap.set("n", "z<CR>", "<CR>", { desc = "original cr", silent = true, noremap = true })
+vim.keymap.set(
+  "n",
+  "<leader>ch",
+  "<Cmd>ClangdSwitchSourceHeader<CR>",
+  { desc = "switch between cpp and hpp", silent = true, noremap = true }
+)
 
 -- vim.api.nvim_set_keymap('n', '<CR>', ':lua toggle_enter_action()<CR>', { noremap = true, silent = true })
 

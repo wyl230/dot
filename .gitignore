@@ -1,0 +1,17 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+*.py
+*.cpp
+a
+r
+node_modules/ 
+node_modules/*
+.xmake/linux/x86_64
+a.cpp
+a.cpp

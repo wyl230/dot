@@ -29,4 +29,5 @@ return {
     })
     vim.keymap.set("v", "<leader>cpp", ":TSCppDefineClassFunc<cr>", { silent = true, desc = "define class func" })
   end,
+  event = "VeryLazy",
 }

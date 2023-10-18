@@ -1,14 +1,14 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-      {
-          "SmiteshP/nvim-navbuddy",
-          dependencies = {
-              "SmiteshP/nvim-navic",
-              "MunifTanjim/nui.nvim"
-          },
-          opts = { lsp = { auto_attach = true } }
-      }
+    {
+      "SmiteshP/nvim-navbuddy",
+      dependencies = {
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
+      },
+      opts = { lsp = { auto_attach = true } },
+    },
   },
   opts = {
     servers = {
@@ -84,13 +84,27 @@ return {
           end
         end)
       end,
+      -- copilot = function(_, opts)
+      --   opts.capabilities.offsetEncoding = { "utf-16" }
+      -- end,
+      -- Copilot = function(_, opts)
+      --   opts.capabilities.offsetEncoding = { "utf-16" }
+      -- end,
+      -- clangd = function(_, opts)
+      --   local cmp_nvim_lsp = require "cmp_nvim_lsp"
+      --   opts.capabilities = cmp_nvim_lsp.default_capabilities()
+      --   opts.cmd = {
+      --     "clangd",
+      --     "--offset-encoding=utf-16",
+      --   },
+      -- end,
     },
   },
   -- "neovim/nvim-lspconfig",
   -- event = "BufReadPre",
   -- dependencies = { "hrsh7th/cmp-nvim-lsp" }, -- if you use nvim-cmp
   -- config = function()
-    -- require("lspconfig").clangd.setup({})
+  -- require("lspconfig").clangd.setup({})
   --
   --   require('lspconfig').rust_analyzer.setup {}
   --   require('lspconfig').lua_ls.setup {}

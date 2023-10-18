@@ -25,64 +25,13 @@ else
   vim.api.nvim_command([[
   augroup set-commentstring-ag
   " autocmd!
-  autocmd BufEnter *.cpp,*.h :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
-  autocmd BufFilePost *.cpp,*.h :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+  " autocmd BufEnter *.cpp,*.h :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+  " autocmd BufFilePost *.cpp,*.h :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
   augroup END
 ]])
 end
 
 require("telescope").load_extension("notify")
-
--- require'lspconfig'.pyright.setup{}
--- require'lspconfig'.pyls_ms.setup{}
--- require"nvim_lsp"
-
--- require'lspconfig'.rust_analyzer.setup{}
--- require'lspconfig'.lua_ls.setup {}
---
--- require'lspconfig'.pyright.setup {
---   on_attach = on_attach,
---   settings =
---     {
---       pyright = {autoImportCompletion = true,},
---       python = {
---         pythonPath = "/home/wyl/anaconda3/bin/python3",
---         analysis = {
---           autoSearchPaths = true,
---           diagnosticMode = 'openFilesOnly',
---           useLibraryCodeForTypes = true,
---           typeCheckingMode = 'off'
---         }
---       }
---     }
--- }
---
-
--- require'lspconfig'.pylsp.setup {
---   settings = {
---     pylsp = {
---       plugins = {
---         ruff = {
---           enabled = false
---         },
---         pyright = {
---           enabled = false
---         },
---         pycodestyle = {
---           enabled = false
---         },
---         pyflakes = {
---           enabled = false
---         },
---         mccabe = {
---           enabled = false
---         }
---       }
---     }
---   },
--- }
---
---
 
 local custom_attach = function(client)
   print("Built-in LSP started.")
@@ -138,11 +87,44 @@ local custom_attach = function(client)
   }
 end
 
--- require("neoscroll").setup()
--- if vim.g.neovide == true then
--- vim.cmd 'set guifont=Hack\ NF:h10'
--- vim.o.guifont='Consolas:h10'
-vim.o.guifont = "FiraCode NF:h10"
+-- set guifont=* to see all the available fonts
+
+-- FiraCode Nerd Font
+-- FiraCode Nerd Font Mono
+-- FiraCode Nerd Font Propo
+-- JetBrains Mono
+-- Cascadia Code
+-- Cascadia Mono
+-- Arial
+-- Bahnschrift
+-- Calibri
+-- Cambria
+-- Cambria Math
+-- Candara
+-- Comic Sans MS
+-- Consolas
+-- Constantia
+-- Corbel
+-- Courier New
+-- Ebrima
+-- Franklin Gothic
+-- Gabriola
+-- Gadugi
+-- Georgia
+-- Impact
+-- Ink Free
+-- Javanese Text
+-- Leelawadee UI
+-- Lucida Console
+-- Lucida Sans Unicode
+-- Malgun Gothic
+-- Microsoft Himalaya
+-- Microsoft JhengHei
+-- Microsoft JhengHei UI
+-- Microsoft New Tai Lue
+-- Microsoft PhagsPa
+-- Microsoft Sans Serif
+-- Microsoft Tai Le
 -- vim.o.guifont = { "Operator Mono,FiraCode NF:h10", "10" }
 -- vim.o.guifont = "Operator Mono,FiraCode NF:h10"
 
@@ -306,5 +288,15 @@ require("lspconfig").clangd.setup({
   cmd = {
     "clangd",
     "--offset-encoding=utf-16",
+    -- "--compile-commands-dir=/home/wyl/ln/test/cpp/asio",
+    -- "-I./build/deps_",
   },
 })
+
+-- neovide
+vim.g.neovide_cursor_animation_length = 0.07
+-- vim.g.neovide_cursor_trail_size = 0.4
+vim.o.guifont = "FiraCode Nerd Font:h12"
+vim.g.neovide_fullscreen = true
+vim.g.neovide_input_ime = false
+-- neovide end
