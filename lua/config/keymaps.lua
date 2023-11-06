@@ -16,7 +16,7 @@ end
 
 vim.keymap.set("n", "<leader>jj", change_quickfix_height, { silent = true, desc = "restore" })
 
-vim.keymap.set("n", "<leader>k", "<leader>qs", { silent = true, desc = "restore" })
+vim.keymap.set("n", "gk", ":lua require('persistence').load()<cr>", { silent = true, desc = "restore" })
 -- Telescope
 vim.keymap.set("n", "qj", "5gj", { silent = true, desc = "fast" })
 vim.keymap.set("n", "qk", "5gk", { silent = true, desc = "fast" })
@@ -80,9 +80,9 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "gh", "^", { desc = "$", remap = true, silent = true })
+vim.keymap.set("n", "gm", "<cmd>call cursor(0, len(getline('.'))/2)<cr>", { desc = "$", remap = true, silent = true })
 vim.keymap.set("n", "gl", "$", { desc = "^", remap = true, silent = true })
 vim.keymap.set("n", "dgh", "d^", { desc = "$", remap = true, silent = true })
--- vim.keymap.set("n", "dgl", "d$", { desc = "^", remap = true, silent = true })
 vim.keymap.set("v", "gh", "^", { desc = "$", remap = true, silent = true })
 vim.keymap.set("v", "gl", "$", { desc = "^", remap = true, silent = true })
 
@@ -509,3 +509,5 @@ function toggle_enter_action()
     enter_counter = 0
   end
 end
+
+vim.cmd("command! Todo execute 'normal! oTODO: '")

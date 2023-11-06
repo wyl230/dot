@@ -6,6 +6,8 @@
 -- autocmd ColorScheme * highlight Visual gui=reverse
 --
 
+vim.api.nvim_command("autocmd FileType vhdl setlocal commentstring=--\\ %s")
+
 -- 定义函数来移除formatoptions中的"c"、"r"和"o"选项
 local function remove_formatoptions(options)
   local result = {}
