@@ -6,6 +6,8 @@
 -- autocmd ColorScheme * highlight Visual gui=reverse
 --
 
+vim.api.nvim_command("autocmd FileType vhdl setlocal commentstring=--\\ %s")
+
 -- 定义函数来移除formatoptions中的"c"、"r"和"o"选项
 local function remove_formatoptions(options)
   local result = {}
@@ -147,3 +149,69 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
     vim.api.nvim_input("<Esc>m'" .. row + 1 .. "gg" .. col + 1 .. "|if<Esc>`'la")
   end,
 })
+
+local sh_group = vim.api.nvim_create_augroup("sh_group", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  group = "sh_group",
+  pattern = { "*.sh" },
+  callback = function()
+    vim.api.nvim_command("!chmod +x " .. vim.fn.expand("%"))
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
+  group = "sh_group",
+  pattern = { "*.sh" },
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+
+    local line_count = vim.api.nvim_buf_line_count(buf)
+
+    if line_count <= 1 then
+      vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "#!/bin/bash" })
+    else
+      print("文件不为空，不执行写入操作")
+    end
+  end,
+})
+
+-----
+function Yank(text)
+  local escape = vim.fn.system("yank", text)
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_err_writeln(escape)
+  else
+    vim.fn.writefile({ escape }, "/home/wyl/testcopy", "b")
+    -- vim.fn.writefile({ escape }, "/dev/tty", "b")
+  end
+end
+
+vim.api.nvim_set_keymap("n", "<silent> <Leader>y", [[:call Yank(@0)<CR>]], { noremap = true, silent = true })
+
+function CopyYank()
+  local regcontents = vim.fn.getreg('"')
+  local text = table.concat(regcontents, "\n")
+  Yank(text)
+end
+
+-- local sh_group = vim.api.nvim_create_augroup("AutoCopyYank", { clear = true })
+-- vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+--   group = "AutoCopyYank",
+--   pattern = { "*" },
+--   callback = function()
+--     local regcontents = vim.fn.getreg('"')
+--     -- local text = table.concat(regcontents, "\n")
+--     local text = regcontents
+--     Yank(text)
+--   end,
+-- })
+
+-- vim.api.nvim_exec(
+--   [[
+-- augroup AutoCopyYank
+--     autocmd!
+--     autocmd TextYankPost * call CopyYank()
+-- augroup END
+-- ]],
+--   false
+-- )
