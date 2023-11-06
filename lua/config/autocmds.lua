@@ -5,7 +5,7 @@
 
 -- autocmd ColorScheme * highlight Visual gui=reverse
 --
-
+vim.api.nvim_command("autocmd FileType * nnoremap <silent> <cr> :lua require'wildfire'.init_selection()<CR>")
 vim.api.nvim_command("autocmd FileType vhdl setlocal commentstring=--\\ %s")
 
 -- 定义函数来移除formatoptions中的"c"、"r"和"o"选项
