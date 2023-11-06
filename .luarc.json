@@ -1,0 +1,9 @@
+{
+    "workspace.checkThirdParty": false,
+    "diagnostics.globals": [
+        "toggle_enter_action"
+    ],
+    "diagnostics.disable": [
+        "param-type-mismatch"
+    ]
+}

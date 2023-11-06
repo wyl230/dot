@@ -490,6 +490,12 @@ local enter_counter = 0
 
 -- vim.api.nvim_set_keymap('n', '<S-CR>', original_enter_mapping, { noremap = true, silent = true })
 vim.keymap.set("n", "z<CR>", "<CR>", { desc = "original cr", silent = true, noremap = true })
+vim.keymap.set(
+  "n",
+  "<leader>ch",
+  "<Cmd>ClangdSwitchSourceHeader<CR>",
+  { desc = "switch between cpp and hpp", silent = true, noremap = true }
+)
 
 -- vim.api.nvim_set_keymap('n', '<CR>', ':lua toggle_enter_action()<CR>', { noremap = true, silent = true })
 

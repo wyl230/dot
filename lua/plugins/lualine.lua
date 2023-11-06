@@ -1,10 +1,9 @@
-
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
     local icons = require("lazyvim.config").icons
-    local Util = require("lazyvim.util")
+    local Util = require("lazyvim.util.ui")
 
     return {
       options = {
@@ -34,8 +33,8 @@ return {
           },
           {
             function()
-              local msg = 'No Active Lsp'
-              local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+              local msg = "No Active Lsp"
+              local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
               local clients = vim.lsp.get_active_clients()
               if next(clients) == nil then
                 return msg
@@ -48,9 +47,10 @@ return {
               end
               return msg
             end,
-            icon = ' LSP:',
-            color = { fg = '#ffffff', gui = 'bold' },}
+            icon = " LSP:",
+            color = { fg = "#ffffff", gui = "bold" },
           },
+        },
 
         lualine_x = {
           -- stylua: ignore

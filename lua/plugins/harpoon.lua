@@ -1,6 +1,6 @@
 return {
   "ThePrimeagen/harpoon",
-  lazy = false,
+  -- lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
@@ -14,4 +14,5 @@ return {
     { "<leader>ha", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Show harpoon marks" },
     -- { "<leader>h1", "<cmd>lua require('harpoon.ui').nav(1)<cr>", desc = "Show harpoon marks" },
   },
+  event = "VeryLazy",
 }

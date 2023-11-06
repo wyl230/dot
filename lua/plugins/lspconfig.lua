@@ -1,14 +1,14 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-      {
-          "SmiteshP/nvim-navbuddy",
-          dependencies = {
-              "SmiteshP/nvim-navic",
-              "MunifTanjim/nui.nvim"
-          },
-          opts = { lsp = { auto_attach = true } }
-      }
+    {
+      "SmiteshP/nvim-navbuddy",
+      dependencies = {
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
+      },
+      opts = { lsp = { auto_attach = true } },
+    },
   },
   opts = {
     servers = {
@@ -77,20 +77,34 @@ return {
       --   return true
       -- end,
       ruff_lsp = function()
-        require("lazyvim.util").on_attach(function(client, _)
+        require("lazyvim.util").lsp.on_attach(function(client, _)
           if client.name == "ruff_lsp" then
             -- Disable hover in favor of Pyright
             client.server_capabilities.hoverProvider = true
           end
         end)
       end,
+      -- copilot = function(_, opts)
+      --   opts.capabilities.offsetEncoding = { "utf-16" }
+      -- end,
+      -- Copilot = function(_, opts)
+      --   opts.capabilities.offsetEncoding = { "utf-16" }
+      -- end,
+      -- clangd = function(_, opts)
+      --   local cmp_nvim_lsp = require "cmp_nvim_lsp"
+      --   opts.capabilities = cmp_nvim_lsp.default_capabilities()
+      --   opts.cmd = {
+      --     "clangd",
+      --     "--offset-encoding=utf-16",
+      --   },
+      -- end,
     },
   },
   -- "neovim/nvim-lspconfig",
   -- event = "BufReadPre",
   -- dependencies = { "hrsh7th/cmp-nvim-lsp" }, -- if you use nvim-cmp
   -- config = function()
-    -- require("lspconfig").clangd.setup({})
+  -- require("lspconfig").clangd.setup({})
   --
   --   require('lspconfig').rust_analyzer.setup {}
   --   require('lspconfig').lua_ls.setup {}
