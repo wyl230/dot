@@ -26,7 +26,11 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
-local M = {
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:↓,foldsep:=,foldclose:>]]
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldcolumn = "1"
+
+return {
   "kevinhwang91/nvim-ufo",
   dependencies = { "kevinhwang91/promise-async" },
   opts = {
@@ -46,10 +50,5 @@ local M = {
     require("ufo").setup(opts)
   end,
   event = "VeryLazy",
+  disabled = true,
 }
-
--- vim.o.fillchars = [[eob: ,fold: ,foldopen:↓,foldsep:=,foldclose:>]]
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldcolumn = "1"
-
-return M

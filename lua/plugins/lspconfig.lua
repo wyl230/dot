@@ -23,7 +23,7 @@ return {
         settings = {
           pyright = { autoImportCompletion = true },
           python = {
-            pythonPath = "/home/wyl/anaconda3/bin/python3",
+            pythonPath = "/home/wyl/ana310/bin/python3",
             analysis = {
               autoSearchPaths = true,
               diagnosticMode = "openFilesOnly",

@@ -279,19 +279,19 @@ require("luasnip.loaders.from_vscode").load({ paths = { "/home/wyl/.config/nvim/
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 -- fix clangd offset problem
-require("lspconfig").clangd.setup({
-  on_attach = function()
-    require("clangd_extensions.inlay_hints").setup_autocmd()
-    require("clangd_extensions.inlay_hints").set_inlay_hints()
-  end,
-  capabilities = cmp_nvim_lsp.default_capabilities(),
-  cmd = {
-    "clangd",
-    "--offset-encoding=utf-16",
-    -- "--compile-commands-dir=/home/wyl/ln/test/cpp/asio",
-    -- "-I./build/deps_",
-  },
-})
+-- require("lspconfig").clangd.setup({
+--   on_attach = function()
+--     require("clangd_extensions.inlay_hints").setup_autocmd()
+--     require("clangd_extensions.inlay_hints").set_inlay_hints()
+--   end,
+--   capabilities = cmp_nvim_lsp.default_capabilities(),
+--   cmd = {
+--     "clangd",
+--     "--offset-encoding=utf-16",
+--     -- "--compile-commands-dir=/home/wyl/ln/test/cpp/asio",
+--     -- "-I./build/deps_",
+--   },
+-- })
 
 -- neovide
 vim.g.neovide_cursor_animation_length = 0.07
@@ -300,3 +300,6 @@ vim.o.guifont = "FiraCode Nerd Font:h12"
 vim.g.neovide_fullscreen = true
 vim.g.neovide_input_ime = false
 -- neovide end
+
+-- set foldcolumn=2
+vim.o.foldcolumn = "2"
