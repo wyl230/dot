@@ -4,7 +4,7 @@ return {
   config = function()
     require("lspsaga").setup({
       ui = {
-        code_action = "σ",
+        code_action = "₰",
       },
       -- debug = false,
       -- use_saga_diagnostic_sign = true,
